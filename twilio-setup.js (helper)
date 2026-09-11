@@ -1,0 +1,7 @@
+// Run once to set your Twilio number webhook
+import twilio from 'twilio';
+const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+await client.incomingPhoneNumbers('YOUR_NUMBER_SID').update({
+  voiceUrl: `https://${process.env.DOMAIN}/voice`
+});
+console.log("Webhook set");
